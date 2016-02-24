@@ -7,20 +7,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pm2-hive/pm2-redis.git" 
-  }, 
+    "url": "https://github.com/pm2-hive/pm2-redis.git"
+  },
   "dependencies": {
     "pmx": "*",
-    "redis-monitor": "*",
-    "redis-scanstreams": "*",
-    "stream-to-array": "*",
     "redis": "*",
-    "shelljs": "*"
+    "redis-scanstreams": "*",
+    "shelljs": "*",
+    "stream-to-array": "*"
   },
   "config": {
     "ip": "127.0.0.1",
     "port": "6379",
-    "password": ""
+    "password": "",
+    "refresh_rate": "1000"
   },
   "author": "",
   "license": "ISC",
