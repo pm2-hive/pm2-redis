@@ -40,11 +40,15 @@ var conf = pmx.initModule({
     // Green / Yellow / Red
   }
 }, function(err, conf) {
-  
-  client = redis.createClient(conf.port, conf.ip, {});
 
-  if (conf.password !== '')
-    client.auth(conf.password);
+  var host = process.env.REDIS_HOST || conf.ip;
+  var port = process.env.REDIS_PORT || conf.port;
+  var password = process.env.REDIS_PASSWORD || conf.password;
+
+  client = redis.createClient(port, host, {});
+
+  if (password !== '')
+    client.auth(password);
 
   var scan = require('./lib/scan'),
     versions = require('./lib/versions'),
@@ -63,5 +67,5 @@ var conf = pmx.initModule({
   pmx.action('upgrade', function(reply) {
     var child = shelljs.exec('/etc/init.d/redis-server restart');
     return reply(child);
-  });  
+  });
 });
